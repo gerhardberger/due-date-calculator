@@ -7,15 +7,6 @@ function isWeekend (startDate) {
   return (currentDay === 6) || (currentDay === 0)
 }
 
-function goToHour (input, hour) {
-  input.setHours(hour)
-  input.setMinutes(0)
-  input.setSeconds(0)
-  input.setMilliseconds(0)
-
-  return input
-}
-
 function reduceHours (startDate, remainingTime) {
   const startTime = +startDate
 
@@ -24,7 +15,7 @@ function reduceHours (startDate, remainingTime) {
     return reduceHours(nextDay, remainingTime)
   }
 
-  const endTime = +goToHour(startDate, END_HOUR)
+  const endTime = startDate.setHours(END_HOUR, 0, 0, 0)
   const difference = endTime - startTime
 
   if (difference > remainingTime) {
