@@ -18,7 +18,7 @@ function reduceHours (startDate, remainingTime) {
   const endTime = startDate.setHours(END_HOUR, 0, 0, 0)
   const difference = endTime - startTime
 
-  if (difference > remainingTime) {
+  if (difference >= remainingTime) {
     return new Date(startTime + remainingTime)
   }
 
